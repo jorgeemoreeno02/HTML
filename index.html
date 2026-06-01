@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fresh Home & Event - Comida Saludable Escolar</title>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Playfair+Display:wght@600&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        :root {
+            --green: #6abf4b;
+            --green-dark: #4a9e2f;
+            --orange: #e07b39;
+            --cream: #f6f9f4;
+            --text: #333;
+        }
+
+        body {
+            font-family: 'Nunito', sans-serif;
+            background-color: var(--cream);
+            color: var(--text);
+        }
+
+        /* HEADER */
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 40px;
+            background: white;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            height: 72px;
+            object-fit: contain;
+        }
+
+        nav a {
+            margin: 0 16px;
+            text-decoration: none;
+            color: var(--green-dark);
+            font-weight: 700;
+            font-size: 0.95rem;
+            transition: color 0.2s;
+        }
+
+        nav a:hover { color: var(--orange); }
+
+        /* HERO */
+        .hero {
+            text-align: center;
+            padding: 90px 20px 80px;
+            background: linear-gradient(135deg, #e8f5e0 0%, #fff8f2 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            width: 400px; height: 400px;
+            background: radial-gradient(circle, rgba(106,191,75,0.12) 0%, transparent 70%);
+            top: -100px; left: -100px;
+            border-radius: 50%;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            width: 300px; height: 300px;
+            background: radial-gradient(circle, rgba(224,123,57,0.10) 0%, transparent 70%);
+            bottom: -80px; right: -60px;
+            border-radius: 50%;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--green-dark);
+            margin-bottom: 16px;
+            position: relative;
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: #555;
+            max-width: 520px;
+            margin: 0 auto 32px;
+            line-height: 1.6;
+        }
+
+        .hero button {
+            padding: 14px 36px;
+            background: var(--green);
+            color: white;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-family: 'Nunito', sans-serif;
+            font-weight: 700;
+            cursor: pointer;
+            transition: background 0.2s, transform 0.15s;
+            box-shadow: 0 4px 14px rgba(106,191,75,0.35);
+        }
+
+        .hero button:hover {
+            background: var(--green-dark);
+            transform: translateY(-2px);
+        }
+
+        /* NOSOTROS WITH BG IMAGE */
+        #nosotros {
+            background-image: url('catering.png');
+            background-size: cover;
+            background-position: center;
+            position: relative;
+        }
+
+        #nosotros::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.55);
+        }
+
+        #nosotros h2,
+        #nosotros p,
+        #nosotros strong {
+            position: relative;
+            color: white !important;
+        }
+
+        #nosotros h2::after {
+            background: var(--orange);
+        }
+
+        /* SECTIONS */
+        section {
+            padding: 60px 60px;
+        }
+
+        section:nth-child(even) {
+            background: white;
+        }
+
+        section h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: var(--green-dark);
+            margin-bottom: 16px;
+            position: relative;
+            display: inline-block;
+        }
+
+        section h2::after {
+            content: '';
+            display: block;
+            width: 50px; height: 3px;
+            background: var(--orange);
+            border-radius: 2px;
+            margin-top: 8px;
+        }
+
+        section p {
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: #555;
+            max-width: 620px;
+        }
+
+        /* MENU */
+        #menu ul {
+            list-style: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 16px;
+            margin-top: 24px;
+            max-width: 720px;
+        }
+
+        #menu ul li {
+            background: var(--cream);
+            border-left: 4px solid var(--green);
+            padding: 14px 18px;
+            border-radius: 8px;
+            font-weight: 600;
+            color: var(--text);
+            transition: transform 0.15s;
+        }
+
+        #menu ul li:hover {
+            transform: translateX(4px);
+            border-left-color: var(--orange);
+        }
+
+        #menu ul li::before {
+            content: '🥗 ';
+        }
+
+        /* BENEFICIOS WITH CORRECTED IMAGE ENQUADRATION & OVERLAY */
+        #beneficios {
+            background-image: url('escolar.jpg');
+            background-size: cover;
+            background-position: center 18%;
+            position: relative;
+            padding: 80px 60px;
+        }
+
+        #beneficios::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.75) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+        }
+
+        #beneficios h2,
+        #beneficios p {
+            position: relative;
+            color: white !important;
+            max-width: 550px;
+        }
+
+        #beneficios h2::after {
+            background: var(--orange);
+        }
+
+        /* CONTACT */
+        #contacto p {
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        #contacto a {
+            color: var(--green-dark);
+            text-decoration: none;
+        }
+
+        /* FOOTER */
+        footer {
+            text-align: center;
+            padding: 24px;
+            background: #2d5a1b;
+            color: rgba(255,255,255,0.75);
+            font-size: 0.9rem;
+        }
+
+        footer span { color: var(--orange); font-weight: 700; }
+
+        @media (max-width: 600px) {
+            header { padding: 12px 20px; flex-wrap: wrap; gap: 12px; }
+            nav a { margin: 0 8px; font-size: 0.85rem; }
+            .hero h1 { font-size: 1.9rem; }
+            section { padding: 40px 24px; }
+            #beneficios { background-position: center top; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <img src="logo.jpeg" alt="Fresh Home & Event" class="logo">
+        <nav>
+            <a href="#nosotros">Nosotros</a>
+            <a href="#menu">Menú Escolar</a>
+            <a href="#beneficios">Beneficios</a>
+            <a href="#contacto">Contacto</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h1>Comida saludable para colegios y universidades</h1>
+        <p>Nutrición fresca, deliciosa y pensada para el bienestar de los estudiantes.</p>
+        <button id="infoBtn" onclick="document.getElementById('nosotros').scrollIntoView({behavior:'smooth'})">Más información</button>
+    </section>
+
+    <section id="nosotros">
+        <h2>Quiénes somos</h2>
+        <p>En <strong>Fresh Home & Event</strong> nos especializamos en la producción de menús saludables para catering, con el firme compromiso de que comer bien no significa renunciar al sabor ni a la calidad de una buena comida casera.</p>
+        <br>
+        <p>Nuestra idea nació con un propósito claro: llevar alimentación saludable a los colegios de primaria y secundaria, para que el alumnado pueda disfrutar cada día de platos nutritivos, ricos y elaborados con ingredientes frescos de calidad.</p>
+        <br>
+        <p>Pero no nos quedamos ahí. También ofrecemos nuestro catering para todo tipo de eventos: <strong>bodas, bautizos, comuniones, cumpleaños, graduaciones</strong> y mucho más. Porque creemos que en cada celebración merece haber una mesa deliciosa y saludable, sin importar la ocasión.</p>
+    </section>
+
+    <section id="menu">
+        <h2>Menú Escolar</h2>
+        <ul>
+            <li>Ensaladas frescas</li>
+            <li>Platos calientes saludables</li>
+            <li>Snacks naturales</li>
+            <li>Opciones sin gluten y vegetarianas</li>
+        </ul>
+    </section>
+
+    <section id="beneficios">
+        <h2>Beneficios para los colegios y las universidades</h2>
+        <p>Mejor rendimiento académico, más energía durante el día, hábitos saludables desde pequeños y alimentos de calidad certificada.</p>
+    </section>
+
+    <section id="contacto">
+        <h2>Contacto</h2>
+        <p>📧 <a href="mailto:info@freshschool.com">info@freshschool.com</a></p>
+        <p>📞 <a href="tel:600000000">600 000 000</a></p>
+    </section>
+
+    <footer>
+        <p>© 2026 <span>Fresh Home & Event</span> — Todos los derechos reservados</p>
+    </footer>
+
+</body>
+</html>
